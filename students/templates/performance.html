@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student's Performance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            margin-top: 3;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .logout-button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Welcome, {{ student_name }}!</h2>
+        <a class="logout-button" href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <div class="container">
+        <h3>Your Performance:</h3>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+            <tr>
+                <td>Math</td>
+                <td>{{ math_marks }}</td>
+            </tr>
+            <tr>
+                <td>Science</td>
+                <td>{{ science_marks }}</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>{{ english_marks }}</td>
+            </tr>
+            <tr>
+                <td>Hindi</td>
+                <td>{{ hindi_marks }}</td>
+            </tr>
+            <tr>
+                <td>Social</td>
+                <td>{{ social_marks }}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{ total_marks  }}</td>
+            </tr>
+        </table>
+
+        <h3>Overall Highest Scorer:</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>{{ overall_highest_scorer.user__username }}</td>
+                <td>{{ overall_highest_scorer.total_marks }}</td>
+            </tr>
+        </table>
+
+        <h3>Individual Subject's Highest Scorer:</h3>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>Math</td>
+                <td>{{ math_highest_scorer.user__username }}</td>
+                <td>{{ math_highest_scorer.max_score }}</td>
+            </tr>
+            <tr>
+                <td>Science</td>
+                <td>{{ science_highest_scorer.user__username }}</td>
+                <td>{{ science_highest_scorer.max_score }}</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>{{ english_highest_scorer.user__username }}</td>
+                <td>{{ english_highest_scorer.max_score }}</td>
+            </tr>
+            <tr>
+                <td>Hindi</td>
+                <td>{{ hindi_highest_scorer.user__username }}</td>
+                <td>{{ hindi_highest_scorer.max_score }}</td>
+            </tr>
+            <tr>
+                <td>Social</td>
+                <td>{{ social_highest_scorer.user__username }}</td>
+                <td>{{ social_highest_scorer.max_score }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

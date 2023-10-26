@@ -1,0 +1,112 @@
+<!-- subject_marks_input.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student's Performance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .logout-button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Welcome, {{ student_name }}!</h2>
+        <a class="logout-button" href="{% url 'logout' %}">Logout</a>
+    </div>
+
+
+    <form method="post" action="{% url 'store_subject_marks' %}">
+        {% csrf_token %}
+        <h2>Enter Subject Marks (Out of 100) to Check Your Performance</h2>
+        
+        <label for="english">English:</label>
+        <input type="number" name="english" id="english" min="0" max="100" required>
+
+        <label for="hindi">Hindi:</label>
+        <input type="number" name="hindi" id="hindi" min="0" max="100" required>
+
+        <label for="math">Mathematics:</label>
+        <input type="number" name="math" id="math" min="0" max="100" required>
+
+        <label for="science">Science:</label>
+        <input type="number" name="science" id="science" min="0" max="100" required>
+
+        <label for="social">Social:</label>
+        <input type="number" name="social" id="social" min="0" max="100" required>
+
+        <input type="submit" value="Submit Marks">
+    </form>
+
+
+ 
+</body>
+</html>
